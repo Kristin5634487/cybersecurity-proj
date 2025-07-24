@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Multi-Party Computation Enhanced by AI Optimization</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .poster {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 25px;
+            box-shadow: 0 30px 100px rgba(0,0,0,0.4);
+            overflow: hidden;
+            animation: slideUp 1s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            background: linear-gradient(135deg, #0f4c75 0%, #3282b8 50%, #bbe1fa 100%);
+            color: white;
+            padding: 50px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(255,255,255,0.08) 0%, transparent 50%),
+                linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.05) 50%, transparent 70%);
+            animation: shimmer 6s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.8; }
+        }
+
+        .header h1 {
+            font-size: 3.4em;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 1;
+            line-height: 1.2;
+        }
+
+        .header .subtitle {
+            font-size: 1.5em;
+            opacity: 0.95;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 1;
+            font-weight: 300;
+        }
+
+        .author-info {
+            background: rgba(255,255,255,0.15);
+            padding: 20px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            position: relative;
+            z-index: 1;
+            font-size: 1.1em;
+        }
+
+        .author-name {
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .author-affiliation {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+
+        .content {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            padding: 45px;
+        }
+
+        .section {
+            background: linear-gradient(145deg, #f8f9fa 0%, #e3f2fd 100%);
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+            transition: all 0.4s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #0f4c75, #3282b8);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .section:hover::before {
+            transform: scaleX(1);
+        }
+
+        .section:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+            border-color: rgba(15, 76, 117, 0.3);
+        }
+
+        .section h2 {
+            color: #0f4c75;
+            font-size: 1.7em;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-weight: 600;
+        }
+
+        .icon {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, #0f4c75, #3282b8);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.1em;
+            box-shadow: 0 6px 20px rgba(15, 76, 117, 0.3);
+        }
+
+        .section p, .section li {
+            color: #2c3e50;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            font-size: 0.95em;
+        }
+
+        .section ul {
+            padding-left: 25px;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #fff8e1 0%, #ffecb3 100%);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 20px 0;
+            border-left: 6px solid #ffa000;
+            box-shadow: 0 4px 15px rgba(255, 160, 0, 0.2);
+        }
+
+        .framework-flow {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin: 25px 0;
+        }
+
+        .flow-step {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 18px 25px;
+            border-radius: 30px;
+            font-size: 0.9em;
+            font-weight: 500;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .flow-step:hover {
+            transform: translateX(8px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .flow-step:not(:last-child)::after {
+            content: '↓';
+            position: absolute;
+            bottom: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #667eea;
+            font-weight: bold;
+            font-size: 1.3em;
+        }
+
+        .optimization-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .optimization-item {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: transform 0.2s ease;
+            border-left: 4px solid #3282b8;
+        }
+
+        .optimization-item:hover {
+            transform: scale(1.02);
+        }
+
+        .optimization-item h4 {
+            color: #0f4c75;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .performance-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            margin: 25px 0;
+        }
+
+        .metric-card {
+            background: linear-gradient(135deg, #e8f5e8 0%, #c8e6c9 100%);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 6px 20px rgba(76, 175, 80, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .metric-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .metric-value {
+            font-size: 3.2em;
+            font-weight: 700;
+            color: #2e7d32;
+            display: block;
+            margin: 15px 0;
+        }
+
+        .metric-label {
+            font-size: 1.2em;
+            color: #424242;
+            font-weight: 500;
+        }
+
+        .comparison-chart {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+            margin: 20px 0;
+        }
+
+        .chart-title {
+            color: #0f4c75;
+            font-size: 1.2em;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .bars-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: end;
+            height: 200px;
+            margin: 20px 0;
+        }
+
+        .bar-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .bar {
+            width: 50px;
+            background: linear-gradient(to top, #e74c3c, #c0392b);
+            border-radius: 8px 8px 0 0;
+            position: relative;
+            display: flex;
+            align-items: end;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 0.8em;
+            padding: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .bar.optimized {
+            background: linear-gradient(to top, #27ae60, #2ecc71);
+        }
+
+        .bar:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+
+        .bar-label {
+            font-size: 0.85em;
+            color: #34495e;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .security-analysis {
+            background: linear-gradient(135deg, #fce4ec 0%, #f8bbd9 100%);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 20px 0;
+            border-left: 6px solid #e91e63;
+        }
+
+        .attack-defense {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin: 15px 0;
+        }
+
+        .attack-item {
+            background: white;
+            padding: 18px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .attack-type {
+            font-weight: 600;
+            color: #c0392b;
+            margin-bottom: 8px;
+        }
+
+        .attack-reduction {
+            font-size: 1.4em;
+            font-weight: 700;
+            color: #27ae60;
+        }
+
+        .full-width {
+            grid-column: 1 / -1;
+        }
+
+        .two-column {
+            grid-column: span 2;
+        }
+
+        .footer {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: white;
+            padding: 35px 40px;
+            text-align: center;
+            font-size: 1em;
+        }
+
+        .footer h3 {
+            margin-bottom: 20px;
+            color: #ecf0f1;
+            font-size: 1.4em;
+        }
+
+        @media (max-width: 1200px) {
+            .content {
+                grid-template-columns: repeat(2, 1fr);
+                padding: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                grid-template-columns: 1fr;
+                padding: 20px;
+            }
+            
+            .header h1 {
+                font-size: 2.4em;
+            }
+            
+            .performance-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .optimization-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="poster">
+        <div class="header">
+            <h1>Design and Verification of Secure Multi-Party Computation Enhanced by AI Optimization</h1>
+            <div class="subtitle">Advanced AI-Driven Framework for Privacy-Preserving Distributed Computing</div>
+            <div class="author-info">
+                <div class="author-name">Linxi Wang</div>
+                <div class="author-affiliation">
+                    School of Engineering<br>
+                    The University of New South Wales<br>
+                    Sydney, Australia | z5634487@ad.unsw.edu.au
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="section">
+                <h2><span class="icon">🔒</span>Research Challenge</h2>
+                <p><strong>Secure Multi-Party Computation (MPC)</strong> enables collaborative computation without revealing private data, but faces critical limitations:</p>
+                
+                <ul>
+                    <li><strong>High computational complexity</strong> - Traditional MPC protocols are computationally intensive</li>
+                    <li><strong>Excessive communication overhead</strong> - O(n²) complexity limits scalability</li>
+                    <li><strong>Limited real-world deployment</strong> - Performance bottlenecks hinder practical applications</li>
+                    <li><strong>Static optimization</strong> - Existing methods lack adaptive optimization capabilities</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <strong>Our Innovation:</strong> AI-enhanced MPC framework with adaptive protocol selection, computation path optimization, and dynamic privacy budget allocation, achieving 67.3% computation time reduction and 39.6% communication overhead decrease.
+                </div>
+            </div>
+
+            <div class="section">
+                <h2><span class="icon">🤖</span>AI-Enhanced Framework</h2>
+                <p><strong>Three-Layer Architecture:</strong></p>
+                
+                <div class="framework-flow">
+                    <div class="flow-step">Adaptive Protocol Selection (Reinforcement Learning)</div>
+                    <div class="flow-step">Computation Path Optimization (Genetic Algorithm)</div>
+                    <div class="flow-step">Dynamic Privacy Budget Allocation (Gradient Descent)</div>
+                    <div class="flow-step">Federated Learning Integration</div>
+                    <div class="flow-step">Security Enhancement & Anomaly Detection</div>
+                </div>
+
+                <div class="optimization-grid">
+                    <div class="optimization-item">
+                        <h4>Protocol Selection</h4>
+                        <p>Reinforcement learning optimizes protocol choice based on data scale, participants, and privacy constraints.</p>
+                    </div>
+                    <div class="optimization-item">
+                        <h4>Communication Optimization</h4>
+                        <p>CNN-based prediction reduces complexity from O(n²) to O(n log n) with 55.6% link reduction.</p>
+                    </div>
+                    <div class="optimization-item">
+                        <h4>Resource Allocation</h4>
+                        <p>Adaptive mechanism distributes tasks based on computational capacity and workload.</p>
+                    </div>
+                    <div class="optimization-item">
+                        <h4>Privacy Protection</h4>
+                        <p>Gradient-based dynamic privacy budget ensures optimal accuracy-privacy balance.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2><span class="icon">⚙️</span>Technical Innovation</h2>
+                <p><strong>Key Optimization Algorithms:</strong></p>
+
+                <div style="background: #f8f9fa; padding: 20px; border-radius: 10px; margin: 15px 0;">
+                    <strong>Optimal Protocol Selection:</strong><br>
+                    P<sub>opt</sub> = arg max<sub>p∈P</sub> Σ<sub>i=1</sub><sup>n</sup> w<sub>i</sub> · f<sub>i</sub>(p, D, N)
+                </div>
+
+                <div style="background: #f8f9fa; padding: 20px; border-radius: 10px; margin: 15px 0;">
+                    <strong>Computation Graph Optimization:</strong><br>
+                    min<sub>G</sub> α · C(G) + β · T(G)
+                </div>
+
+                <div style="background: #f8f9fa; padding: 20px; border-radius: 10px; margin: 15px 0;">
+                    <strong>Privacy Budget Update:</strong><br>
+                    ε<sub>i</sub><sup>(t+1)</sup> = ε<sub>i</sub><sup>(t)</sup> - η · ∇E(ε<sub>i</sub><sup>(t)</sup>)
+                </div>
+
+                <p><strong>Security Enhancements:</strong></p>
+                <ul>
+                    <li><strong>Homomorphic Encryption:</strong> Secure gradient aggregation</li>
+                    <li><strong>Differential Privacy:</strong> Gaussian noise injection</li>
+                    <li><strong>Anomaly Detection:</strong> Malicious participant identification</li>
+                    <li><strong>Federated Learning:</strong> Decentralized model training</li>
+                </ul>
+            </div>
+
+            <div class="section two-column">
+                <h2><span class="icon">📊</span>Performance Results</h2>
+                
+                <div class="performance-container">
+                    <div class="metric-card">
+                        <span class="metric-value">67.3%</span>
+                        <div class="metric-label">Computation Time Reduction</div>
+                    </div>
+                    <div class="metric-card">
+                        <span class="metric-value">39.6%</span>
+                        <div class="metric-label">Communication Overhead Reduction</div>
+                    </div>
+                </div>
+
+                <div class="comparison-chart">
+                    <div class="chart-title">Performance Comparison Across Application Domains</div>
+                    <div class="bars-container">
+                        <div class="bar-group">
+                            <div class="bar" style="height: 120px;">Traditional</div>
+                            <div class="bar optimized" style="height: 80px;">AI-Enhanced</div>
+                            <div class="bar-label">Finance</div>
+                        </div>
+                        <div class="bar-group">
+                            <div class="bar" style="height: 100px;">Traditional</div>
+                            <div class="bar optimized" style="height: 65px;">AI-Enhanced</div>
+                            <div class="bar-label">Healthcare</div>
+                        </div>
+                        <div class="bar-group">
+                            <div class="bar" style="height: 140px;">Traditional</div>
+                            <div class="bar optimized" style="height: 90px;">AI-Enhanced</div>
+                            <div class="bar-label">IoT</div>
+                        </div>
+                    </div>
+                </div>
+
+                <p><strong>Experimental Setup:</strong> Intel Xeon E5-2680 v4 CPU, NVIDIA Tesla V100 GPU, 128GB RAM</p>
+                <ul>
+                    <li><strong>Finance:</strong> 100,000 credit records, 26 features</li>
+                    <li><strong>Healthcare:</strong> 80,000 patient records, 32 features</li>
+                    <li><strong>IoT:</strong> 500,000 sensor records, 12 features</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2><span class="icon">🛡️</span>Security Analysis</h2>
+                <p><strong>Multi-Attack Resistance Evaluation:</strong></p>
+
+                <div class="security-analysis">
+                    <strong>Privacy Protection Strength:</strong> 23.2% improvement over baseline methods
+                </div>
+
+                <div class="attack-defense">
+                    <div class="attack-item">
+                        <div class="attack-type">Data Reconstruction</div>
+                        <div class="attack-reduction">74.7%</div>
+                        <div style="font-size: 0.8em; color: #666;">Attack Success Reduction</div>
+                    </div>
+                    <div class="attack-item">
+                        <div class="attack-type">Model Inversion</div>
+                        <div class="attack-reduction">63.6%</div>
+                        <div style="font-size: 0.8em; color: #666;">Attack Success Reduction</div>
+                    </div>
+                    <div class="attack-item">
+                        <div class="attack-type">Byzantine Attack</div>
+                        <div class="attack-reduction">26.4%</div>
+                        <div style="font-size: 0.8em; color: #666;">Accuracy Improvement</div>
+                    </div>
+                </div>
+
+                <p><strong>Security Mechanisms:</strong></p>
+                <ul>
+                    <li><strong>Differential Privacy:</strong> Gaussian noise injection for gradient protection</li>
+                    <li><strong>Secure Aggregation:</strong> Homomorphic encryption for model updates</li>
+                    <li><strong>Anomaly Detection:</strong> Deep learning-based malicious participant identification</li>
+                    <li><strong>Privacy Budget Management:</strong> Dynamic allocation for optimal accuracy-privacy trade-off</li>
+                </ul>
+            </div>
+
+            <div class="section full-width">
+                <h2><span class="icon">🎯</span>Applications & Impact</h2>
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px;">
+                    <div>
+                        <h3 style="color: #0f4c75; margin-bottom: 15px;">Finance Sector</h3>
+                        <ul>
+                            <li>Multi-bank credit scoring without data sharing</li>
+                            <li>Fraud detection across financial institutions</li>
+                            <li>Risk assessment with privacy preservation</li>
+                            <li>Regulatory compliance for data protection</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 style="color: #0f4c75; margin-bottom: 15px;">Healthcare</h3>
+                        <ul>
+                            <li>Multi-hospital collaborative research</li>
+                            <li>Patient data analysis without privacy breach</li>
+                            <li>Drug discovery with distributed datasets</li>
+                            <li>Medical AI training across institutions</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 style="color: #0f4c75; margin-bottom: 15px;">Internet of Things</h3>
+                        <ul>
+                            <li>Smart city data analytics</li>
+                            <li>Industrial IoT collaboration</li>
+                            <li>Edge computing privacy protection</li>
+                            <li>Distributed sensor data processing</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="highlight-box" style="margin-top: 30px;">
+                    <strong>Key Achievements:</strong> Successfully demonstrated AI-enhanced MPC with 67.342% computation time reduction, 39.578% communication overhead decrease, and 23.176% privacy protection improvement across three major application domains.
+                </div>
+            </div>
+
+            <div class="section full-width">
+                <h2><span class="icon">🚀</span>Conclusions & Future Work</h2>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
+                    <div>
+                        <h3 style="color: #27ae60; margin-bottom: 15px;">Research Contributions</h3>
+                        <ul>
+                            <li>Novel AI-optimized MPC framework with three-layer architecture</li>
+                            <li>Significant performance improvements validated across multiple domains</li>
+                            <li>Comprehensive security analysis demonstrating attack resistance</li>
+                            <li>Practical deployment feasibility in real-world applications</li>
+                            <li>Deep integration of federated learning with secure computation</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 style="color: #e74c3c; margin-bottom: 15px;">Future Directions</h3>
+                        <ul>
+                            <li>Extension to larger-scale distributed environments</li>
+                            <li>Integration with blockchain for enhanced security</li>
+                            <li>Advanced quantum-resistant cryptographic protocols</li>
+                            <li>Real-time optimization for dynamic network conditions</li>
+                            <li>Industry-specific customization and deployment</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <h3>Research Impact</h3>
+            <p>This research presents a groundbreaking approach to secure multi-party computation by leveraging artificial intelligence optimization algorithms. The proposed framework significantly reduces computational complexity and communication overhead while maintaining strong privacy guarantees, enabling practical deployment of MPC in real-world scenarios across finance, healthcare, and IoT domains. The deep integration of AI with cryptographic protocols opens new possibilities for privacy-preserving distributed computing in the data-driven era.</p>
+        </div>
+    </div>
+</body>
+</html>
